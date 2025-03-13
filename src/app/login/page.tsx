@@ -45,12 +45,13 @@ export default function Login() {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100 text-xs">
+    <div className="flex justify-center items-center min-h-screen bg-gradient-to-br from-[#000000] via-[#0070C0] to-[#dc8435] text-xs">
+      {/* Login Form */}
       <form
         onSubmit={handleSubmit}
-        className="w-[400px] bg-white border rounded-xl p-8 shadow-xl"
+        className="w-[400px] bg-white border rounded-xl p-8 shadow-2xl"
       >
-        <h2 className="text-center text-3xl font-bold mb-6 text-[#273256]">
+        <h2 className="text-center text-3xl font-bold mb-6 text-[#0070C0]">
           LOG IN
         </h2>
 
@@ -112,7 +113,7 @@ export default function Login() {
         {/* Login Button */}
         <button
           type="submit"
-          className="bg-[#273256] text-white p-3 rounded-md w-full mt-5 hover:bg-[#1f2744] transition font-bold"
+          className="bg-[#0070C0] text-white p-3 rounded-md w-full mt-5 hover:bg-[#005a9c] transition font-bold"
         >
           LOG IN
         </button>
