@@ -20,8 +20,8 @@ type ThemeMode = "light" | "dark";
 const Header = () => {
   const [theme, setTheme] = useState<ThemeMode>("light");
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
-  const [viewDropdown, setViewDropdown] = useState<boolean>(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
+  const [profileDropdown, setProfileDropdown] = useState(false);
 
   // Check stored theme preference on component mount
   useEffect(() => {
@@ -71,7 +71,7 @@ const Header = () => {
       ],
     },
     {
-      title: "2025 Lazaro-Javier Bar",
+      title: "Latest Cases",
       items: [
         { name: "Cases", href: "/cases" },
         { name: "Digest Compilations", href: "/compilations" },
@@ -85,13 +85,14 @@ const Header = () => {
     <nav className="bg-[var(--bg-color)] text-[var(--text-color)] py-4 shadow-md fixed w-full top-0 z-50">
       <div className="w-full flex items-center justify-between px-4 sm:px-6 lg:px-10">
         {/* Logo */}
-        <div className="text-2xl font-bold">
+        <div className="text-2xl font-bold flex-shrink-0">
           <Link href="/">
-            <span className="hover:text-gray-300 cursor-pointer">
+            <span className="text-blue-900 hover:text-blue-600 cursor-pointer whitespace-nowrap">
               Empower PH
             </span>
           </Link>
         </div>
+
 
         {/* Mobile Menu Button */}
         <button
@@ -102,7 +103,7 @@ const Header = () => {
         </button>
 
         {/* Desktop Navigation */}
-        <div className="hidden sm:flex items-center space-x-6">
+        <div className="hidden sm:flex items-center justify-center w-full space-x-12">
           {menus.map((menu) => (
             <div key={menu.title} className="relative">
               <button
@@ -115,10 +116,7 @@ const Header = () => {
                 <ul className="absolute bg-gray-700 text-white mt-2 w-56 rounded-md shadow-lg py-2">
                   {menu.items.map((item) => (
                     <li key={item.name}>
-                      <Link
-                        href={item.href}
-                        className="block px-4 py-2 hover:bg-gray-600"
-                      >
+                      <Link href={item.href} className="block px-4 py-2 hover:bg-gray-600">
                         {item.name}
                       </Link>
                     </li>
@@ -129,65 +127,71 @@ const Header = () => {
           ))}
 
           {/* AI Page */}
-          <Link href="/ai" className="hover:text-gray-300">
-            AI
-          </Link>
+          <div>
+            <Link
+              href="/ai"
+              className="bg-gradient-to-br from-gray-700 to-blue-700 text-white px-4 py-1 rounded-lg flex items-center hover:bg-gray-600 transition duration-200"
+            >
+              AI
+            </Link>
+          </div>
+        </div>
 
-          {/* Pricing */}
-          <Link href="/pricing" className="hover:text-gray-300">
-            Pricing
-          </Link>
 
           {/* View (Theme & Settings) */}
           <div className="relative">
             <button
-              onClick={() => setViewDropdown(!viewDropdown)}
-              className="bg-gray-700 text-white px-3 py-2 rounded-lg flex items-center hover:bg-gray-600 transition duration-200"
+              onClick={toggleTheme}
+              className="relative flex items-center bg-gray-300 dark:bg-gray-600 p-1 rounded-full w-14 h-7 transition duration-300 mr-5"
             >
-              <span className="mr-2">View</span>
-              <FaCog />
+              <FaSun className="text-yellow-500 absolute left-2" />
+              <div
+                className={`w-6 h-6 bg-white rounded-full shadow-md transform transition ${
+                  theme === "dark" ? "translate-x-7" : "translate-x-0"
+                }`}
+              ></div>
+              <FaMoon className="text-gray-500 absolute right-2" />
             </button>
+          </div>
 
-            {viewDropdown && (
-              <div className="absolute right-0 mt-2 w-60 bg-white text-gray-900 rounded-lg shadow-lg p-4">
-                <button className="w-full text-left px-2 py-2 rounded-md hover:bg-gray-100 transition duration-200">
-                  Switch Themes
-                </button>
-
-                <hr className="my-2" />
-
-                {/* Dark Mode Toggle */}
-                <div className="flex justify-between items-center">
-                  <span>Light/Dark mode</span>
-                  <button
-                    onClick={toggleTheme}
-                    className="relative flex items-center bg-gray-300 dark:bg-gray-600 p-1 rounded-full w-14 h-7 transition duration-300"
-                  >
-                    <FaSun className="text-yellow-500 absolute left-2" />
-                    <div
-                      className={`w-6 h-6 bg-white rounded-full shadow-md transform transition ${
-                        theme === "dark" ? "translate-x-7" : "translate-x-0"
-                      }`}
-                    ></div>
-                    <FaMoon className="text-gray-500 absolute right-2" />
-                  </button>
-                </div>
+          {/* User Profile Dropdown */}
+          <div className="relative">
+            <button
+              onClick={() => setProfileDropdown(!profileDropdown)}
+              className="flex items-center bg-gray-200 dark:bg-gray-800 px-3 py-1 rounded-full space-x-2"
+            >
+              <div className="w-8 h-8 bg-purple-500 text-white flex items-center justify-center rounded-full">
+                J
+              </div>
+              <span className="text-sm">
+                Juan
+                <br />
+                <span className="text-xs text-gray-600 dark:text-gray-400">
+                  Student
+                </span>
+              </span>
+            </button>
+            {profileDropdown && (
+              <div className="absolute right-0 mt-2 w-40 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg shadow-lg p-2">
+                <a
+                  href="/login"
+                  className="block w-full text-left px-4 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-600 transition duration-200"
+                >
+                  Log Out
+                </a>
               </div>
             )}
           </div>
-
-          {/* Log Out */}
-          <Link href="/login" className="hover:text-gray-300">
-            Log Out
-          </Link>
         </div>
-      </div>
+    
 
       {/* Mobile Navigation */}
       {mobileMenuOpen && (
         <div className="sm:hidden bg-gray-900 text-white w-full p-4 flex flex-col space-y-3">
           {menus.map((menu) => (
-            <div key={menu.title}>
+            <div key={menu.title} className="pl-4">
+              {" "}
+              {/* Adjusted left alignment */}
               <button
                 className="flex justify-between w-full text-left px-2 py-2 rounded-md hover:bg-gray-700 transition duration-200"
                 onClick={() => toggleDropdown(menu.title)}
@@ -196,7 +200,9 @@ const Header = () => {
                 <FaChevronDown className="ml-2" />
               </button>
               {openDropdown === menu.title && (
-                <ul className="ml-4 mt-2">
+                <ul className="ml-6 mt-2">
+                  {" "}
+                  {/* Slight indent for dropdown */}
                   {menu.items.map((item) => (
                     <li key={item.name}>
                       <Link
@@ -211,13 +217,19 @@ const Header = () => {
               )}
             </div>
           ))}
-          <Link href="/ai" className="hover:text-gray-300">
-            AI
-          </Link>
-          <Link href="/pricing" className="hover:text-gray-300">
-            Pricing
-          </Link>
-          <Link href="/login" className="hover:text-gray-300">
+
+          {/* AI Page - consistent with desktop */}
+          <div className="pl-4">
+            <Link
+              href="/ai"
+              className="text-white px-4 py-1 rounded-lg flex items-center hover:bg-gray-600 transition duration-200"
+            >
+              AI
+            </Link>
+          </div>
+
+          {/* Log Out Option */}
+          <Link href="/login" className="pl-4 hover:text-gray-300">
             Log Out
           </Link>
         </div>

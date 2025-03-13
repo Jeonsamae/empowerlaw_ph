@@ -41,14 +41,7 @@ const Footer = () => {
         <div>
           <h3 className="font-semibold text-lg mb-2">Legal Research</h3>
           <ul className="space-y-1">
-            {[
-              "Pricing",
-              "Decisions",
-              "Laws",
-              "Taxation",
-              "Corporate",
-              "Labor",
-            ].map((item) => (
+            {["Pricing", "Decisions", "Laws", "Taxation", "Corporate", "Labor"].map((item) => (
               <li key={item}>
                 <a href="#" className="hover:text-blue-600">
                   {item}
@@ -62,14 +55,7 @@ const Footer = () => {
         <div>
           <h3 className="font-semibold text-lg mb-2">Resources</h3>
           <ul className="space-y-1">
-            {[
-              "Bar Exams",
-              "Reviewers",
-              "Legal Aid Offices",
-              "Court Directory",
-              "Legal Dictionary",
-              "Blog",
-            ].map((item) => (
+            {["Bar Exams", "Reviewers", "Legal Aid Offices", "Court Directory", "Legal Dictionary", "Blog"].map((item) => (
               <li key={item}>
                 <a href="#" className="hover:text-blue-600">
                   {item}
@@ -83,14 +69,7 @@ const Footer = () => {
         <div>
           <h3 className="font-semibold text-lg mb-2">Legal</h3>
           <ul className="space-y-1">
-            {[
-              "Pricing",
-              "Lawyers",
-              "About",
-              "Contact Us",
-              "Hiring",
-              "FAQs",
-            ].map((item) => (
+            {["Pricing", "Lawyers", "About", "Contact Us", "Hiring", "FAQs"].map((item) => (
               <li key={item}>
                 <a href="#" className="hover:text-blue-600">
                   {item}
