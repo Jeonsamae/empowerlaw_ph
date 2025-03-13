@@ -51,7 +51,7 @@ export default function Login() {
         onSubmit={handleSubmit}
         className="w-[400px] bg-white border rounded-xl p-8 shadow-2xl"
       >
-        <h2 className="text-center text-3xl font-bold mb-6 text-[#0070C0]">
+        <h2 className="text-center text-3xl font-bold mb-6 text-blue-900">
           LOG IN
         </h2>
 
@@ -105,7 +105,7 @@ export default function Login() {
           <button className="flex items-center gap-2 border p-2 rounded-md w-40 justify-center hover:bg-blue-100 transition">
             <FaFacebook className="text-blue-600" /> Facebook
           </button>
-          <button className="flex items-center gap-2 border p-2 rounded-md w-40 justify-center hover:bg-red-100 transition">
+          <button className="flex items-center gap-2 border p-2 rounded-md w-40 justify-center hover:bg-blue-100 transition">
             <FaGoogle className="text-red-600" /> Google
           </button>
         </div>

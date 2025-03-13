@@ -53,7 +53,7 @@ const Page = () => {
             needs.
           </p>
           <motion.button
-            className="mt-6 max-w-[200px] text-white px-2 py-3 bg-blue-900 hover:bg-blue-700 transition-all rounded-full text-lg"
+            className="mt-6 max-w-[200px] text-white px-2 py-3 bg-blue-900 hover:bg-[#0070C0] transition-all rounded-full text-lg"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >

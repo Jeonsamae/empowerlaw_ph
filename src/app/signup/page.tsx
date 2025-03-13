@@ -122,16 +122,16 @@ export default function Signup() {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gradient-to-br from-[#000000] via-[#0070C0] to-[#dc8435] text-xs">
+    <div className="flex justify-center items-center min-h-screen bg-gradient-to-br from-[#000000] via-[#0070C0] to-[#dc8435] text-xs sm:px-6">
       <form
         onSubmit={handleSubmit}
-        className="w-[550px] bg-white border rounded-xl p-8 shadow-xl"
+        className="w-[550px] max-w-lg sm:max-w-xl md:max-w-2xl bg-white border rounded-xl p-6 sm:p-8 shadow-xl"
       >
-        <h2 className="text-center text-3xl font-bold mb-6 text-gray-800">
+        <h2 className="text-center text-2xl sm:text-3xl font-bold mb-6 text-blue-900">
           SIGN UP
         </h2>
 
-        <div className="grid grid-cols-2 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           {/* First Name */}
           <div>
             <label className="font-semibold">First Name</label>
@@ -353,7 +353,7 @@ export default function Signup() {
         </div>
 
         {/* Submit Button */}
-        <button className="bg-[#273256] text-white p-3 rounded-md w-full mt-5 hover:bg-[#1f2744] transition font-bold">
+        <button className="bg-[#0070C0] text-white p-3 rounded-md w-full mt-5 hover:bg-[#005a9c] transition font-bold">
           SIGN UP
         </button>
 
